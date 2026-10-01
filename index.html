@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOEIC Reading Exam Flow｜Premium Edition</title>
+  <style>
+    :root{
+      --bg:#0c111f;
+      --bg-deep:#050812;
+      --card:rgba(255,252,243,.94);
+      --card-solid:#fffaf0;
+      --ink:#1b2030;
+      --muted:#756b5b;
+      --line:rgba(183,148,77,.34);
+      --line-soft:rgba(42,54,82,.12);
+      --blue:#213a69;
+      --blue-dark:#111b33;
+      --blue-soft:#edf3ff;
+      --green:#1f6b5f;
+      --green-soft:#e8f7f2;
+      --red:#9b2f25;
+      --red-soft:#fff0ec;
+      --amber:#c6903d;
+      --amber-soft:#fff3d8;
+      --gold:#d7b56d;
+      --gold-strong:#f1cf7a;
+      --copper:#a96f3a;
+      --shadow:0 28px 80px rgba(0,0,0,.24),0 10px 34px rgba(12,17,31,.16);
+      --inner-glow:inset 0 1px 0 rgba(255,255,255,.72), inset 0 -1px 0 rgba(93,64,25,.08);
+      --sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      --serif:"Noto Serif TC","Songti TC","PMingLiU",Georgia,serif;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:var(--sans);
+      line-height:1.66;
+      background:
+        radial-gradient(circle at 14% 8%,rgba(241,207,122,.22),transparent 25rem),
+        radial-gradient(circle at 88% 14%,rgba(92,120,184,.23),transparent 30rem),
+        linear-gradient(180deg,rgba(5,8,18,.82),rgba(15,18,31,.62) 34%,rgba(238,226,199,.86) 72%,rgba(250,244,230,.96)),
+        url("assets/bg_salon.webp") center top / cover fixed no-repeat;
+      overflow-x:hidden;
+    }
+    body::before{content:none}
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px),
+        linear-gradient(180deg,rgba(255,255,255,.035) 1px,transparent 1px),
+        radial-gradient(circle at 50% 0,transparent 0,transparent 28rem,rgba(8,10,19,.20) 70%);
+      background-size:72px 72px,72px 72px,100% 100%;
+      opacity:.42;
+    }
+    button,input,select,textarea{font:inherit}
+    button{border:0;cursor:pointer}
+    button:disabled{opacity:.48;cursor:not-allowed;filter:saturate(.7)}
+    ::selection{background:rgba(215,181,109,.35)}
+    .wrap{
+      position:relative;
+      z-index:1;
+      width:min(1200px,calc(100vw - 32px));
+      margin:0 auto;
+      padding:28px 0 72px;
+    }
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:34px 36px;
+      border-radius:34px;
+      color:#fff8e7;
+      border:1px solid rgba(241,207,122,.42);
+      background:
+        linear-gradient(110deg,rgba(7,10,20,.95),rgba(15,24,43,.82) 45%,rgba(44,29,16,.58)),
+        url("assets/bg_observatory.webp") center 48% / cover no-repeat;
+      box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.08);
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border:1px solid rgba(241,207,122,.24);
+      border-radius:26px;
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:-160px;
+      width:420px;
+      height:420px;
+      border-radius:999px;
+      background:
+        radial-gradient(circle,rgba(241,207,122,.34),rgba(241,207,122,.05) 52%,transparent 70%);
+      border:1px solid rgba(241,207,122,.18);
+      filter:blur(.2px);
+      opacity:.96;
+      z-index:0;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      align-items:flex-end;
+      flex-wrap:wrap;
+    }
+    .kicker{
+      margin:0 0 10px;
+      color:var(--gold-strong);
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-weight:900;
+      text-shadow:0 1px 14px rgba(241,207,122,.25);
+    }
+    .kicker::before{content:"✦";margin-right:9px;color:#fff1bd}
+    h1{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(32px,5vw,54px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+      font-weight:900;
+      text-wrap:balance;
+    }
+    .hero p{
+      max-width:780px;
+      margin:15px 0 0;
+      color:rgba(255,248,231,.82);
+      text-shadow:0 1px 20px rgba(0,0,0,.22);
+    }
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:44px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#213a69,#0e1b34);
+      color:#fff7df;
+      font-weight:900;
+      letter-spacing:.01em;
+      text-decoration:none;
+      box-shadow:0 14px 26px rgba(14,27,52,.22),inset 0 1px 0 rgba(255,255,255,.15);
+      transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,filter .18s ease;
+      border:1px solid rgba(241,207,122,.24);
+    }
+    .btn:hover:not(:disabled){
+      transform:translateY(-2px);
+      box-shadow:0 18px 32px rgba(14,27,52,.28),inset 0 1px 0 rgba(255,255,255,.2);
+      filter:brightness(1.04);
+    }
+    .btn.light{
+      background:rgba(255,248,231,.09);
+      border:1px solid rgba(241,207,122,.36);
+      color:#fff7df;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+      backdrop-filter:blur(12px);
+    }
+    .btn.secondary{
+      background:linear-gradient(180deg,#fffaf0,#efe1c0);
+      color:#1e2840;
+      border:1px solid rgba(154,112,43,.24);
+      box-shadow:0 12px 26px rgba(40,29,14,.08),var(--inner-glow);
+    }
+    .btn.ghost{
+      background:rgba(255,252,243,.72);
+      color:#15213a;
+      border:1px solid rgba(173,132,56,.28);
+      box-shadow:var(--inner-glow);
+      backdrop-filter:blur(14px);
+    }
+    .btn.green{
+      background:linear-gradient(135deg,#2f7c69,#0e4f4b);
+      border-color:rgba(215,181,109,.26);
+    }
+    .btn.red{
+      background:linear-gradient(135deg,#b14a32,#86231c);
+      border-color:rgba(255,232,189,.24);
+    }
+    .panel{
+      position:relative;
+      margin-top:20px;
+      background:
+        linear-gradient(180deg,rgba(255,252,243,.96),rgba(250,242,224,.92));
+      border:1px solid rgba(183,148,77,.34);
+      border-radius:28px;
+      box-shadow:var(--shadow),var(--inner-glow);
+      backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg,rgba(215,181,109,.08) 1px,transparent 1px),
+        linear-gradient(180deg,rgba(215,181,109,.07) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(180deg,#000,transparent 70%);
+      opacity:.38;
+    }
+    .panel-head{
+      position:relative;
+      z-index:1;
+      padding:22px 24px 0;
+    }
+    .panel-title{
+      margin:0;
+      font-family:var(--serif);
+      font-size:23px;
+      letter-spacing:-.025em;
+      color:#192238;
+    }
+    .panel-sub{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .panel-body{
+      position:relative;
+      z-index:1;
+      padding:24px;
+    }
+    .setup-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .upload-card{
+      position:relative;
+      min-height:206px;
+      overflow:hidden;
+      border:1.5px dashed rgba(151,113,48,.38);
+      border-radius:24px;
+      padding:18px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.82),rgba(247,236,211,.78)),
+        radial-gradient(circle at 100% 0,rgba(215,181,109,.18),transparent 40%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+      transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
+    }
+    .upload-card::after{
+      content:"";
+      position:absolute;
+      right:-72px;
+      bottom:-88px;
+      width:190px;
+      height:190px;
+      background:url("assets/ornament_curios.webp") center / contain no-repeat;
+      opacity:.16;
+      filter:drop-shadow(0 16px 28px rgba(0,0,0,.28));
+      pointer-events:none;
+    }
+    .upload-card.drag{
+      border-color:var(--gold);
+      background:linear-gradient(180deg,#fff8e8,#f3dfad);
+      transform:translateY(-2px);
+      box-shadow:0 18px 32px rgba(78,54,22,.14),inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .pill{
+      display:inline-flex;
+      padding:6px 11px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#1b2c4d,#111827);
+      color:#f6d88c;
+      border:1px solid rgba(215,181,109,.3);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.075em;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .upload-card h3{
+      margin:15px 0 4px;
+      font-family:var(--serif);
+      font-size:21px;
+      letter-spacing:-.035em;
+      color:#16213a;
+    }
+    .upload-card p{margin:0;color:var(--muted);font-size:13px}
+    .file-input{
+      width:100%;
+      margin-top:14px;
+      border:1px solid rgba(183,148,77,.28);
+      border-radius:16px;
+      padding:11px;
+      background:rgba(255,255,255,.74);
+      color:#625642;
+      font-size:13px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.74);
+    }
+    .mini-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+      margin-top:13px;
+    }
+    .mini{
+      background:rgba(20,32,51,.06);
+      border:1px solid rgba(183,148,77,.16);
+      border-radius:16px;
+      padding:10px 11px;
+    }
+    .mini strong{
+      display:block;
+      font-family:var(--serif);
+      font-size:21px;
+      line-height:1;
+      color:#192238;
+    }
+    .mini span{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+    .settings{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:13px;
+      margin-top:18px;
+    }
+    .field{display:grid;gap:7px}
+    .field label{
+      font-size:13px;
+      font-weight:900;
+      color:#403628;
+      letter-spacing:.015em;
+    }
+    .field input,.field select,.field textarea{
+      width:100%;
+      border:1px solid rgba(183,148,77,.31);
+      border-radius:16px;
+      padding:12px 13px;
+      background:rgba(255,255,255,.76);
+      color:var(--ink);
+      outline:none;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:rgba(198,144,61,.72);
+      box-shadow:0 0 0 4px rgba(215,181,109,.2),inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .setup-actions{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .loaded-list{margin-top:15px;display:grid;gap:9px}
+    .loaded-file{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:11px 13px;
+      border:1px solid rgba(183,148,77,.23);
+      border-radius:16px;
+      background:rgba(255,255,255,.56);
+      font-size:13px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.74);
+    }
+    .loaded-file span{color:var(--muted)}
+    .exam-top{
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:none;
+      margin-top:20px;
+      padding:13px;
+      border:1px solid rgba(215,181,109,.36);
+      border-radius:24px;
+      background:rgba(255,248,231,.86);
+      box-shadow:0 16px 44px rgba(7,10,20,.17),var(--inner-glow);
+      backdrop-filter:blur(20px) saturate(1.1);
+    }
+    body.exam-mode .exam-top{display:block}
+    .exam-top-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tab{
+      padding:9px 13px;
+      border-radius:999px;
+      background:rgba(31,42,66,.09);
+      color:#2d3140;
+      border:1px solid rgba(183,148,77,.2);
+      font-weight:900;
+      font-size:14px;
+      transition:.16s ease;
+    }
+    .tab:hover{transform:translateY(-1px)}
+    .tab.active{
+      background:linear-gradient(135deg,#213a69,#10192e);
+      color:#fff4d6;
+      border-color:rgba(215,181,109,.42);
+    }
+    .tab.done{
+      background:linear-gradient(180deg,#eefaf5,#d9f0e7);
+      color:#0f5a52;
+      border-color:rgba(31,107,95,.22);
+    }
+    .meter{min-width:min(350px,100%);display:grid;gap:7px}
+    .meter-meta{
+      display:flex;
+      justify-content:space-between;
+      color:#594d3c;
+      font-size:13px;
+      font-weight:900;
+    }
+    .bar{
+      height:10px;
+      border-radius:999px;
+      background:rgba(24,34,56,.12);
+      overflow:hidden;
+      box-shadow:inset 0 1px 2px rgba(0,0,0,.08);
+    }
+    .bar>div{
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,#1f3766,#c6903d 55%,#2f7c69);
+      box-shadow:0 0 18px rgba(215,181,109,.46);
+      transition:width .24s ease;
+    }
+    .exam-screen{margin-top:20px;display:none}
+    body.exam-mode .exam-screen{display:block}
+    body.exam-mode #setupPanel{display:none}
+    .exam-card{
+      position:relative;
+      overflow:hidden;
+      background:rgba(255,252,243,.95);
+      border:1px solid rgba(183,148,77,.34);
+      border-radius:30px;
+      box-shadow:var(--shadow),var(--inner-glow);
+      backdrop-filter:blur(14px);
+    }
+    .exam-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 92% 6%,rgba(215,181,109,.18),transparent 18rem),
+        linear-gradient(90deg,rgba(215,181,109,.06) 1px,transparent 1px);
+      background-size:auto,36px 36px;
+      opacity:.72;
+    }
+    .section-head{
+      position:relative;
+      z-index:1;
+      padding:26px 28px;
+      border-bottom:1px solid rgba(183,148,77,.29);
+      background:
+        linear-gradient(90deg,rgba(10,15,28,.90),rgba(32,48,82,.76),rgba(114,76,34,.46)),
+        url("assets/bg_station.webp") center 48% / cover no-repeat;
+      color:#fff6dc;
+    }
+    .section-head h2{
+      margin:0;
+      font-family:var(--serif);
+      font-size:30px;
+      letter-spacing:-.04em;
+    }
+    .directions{margin:8px 0 0;color:rgba(255,246,220,.78)}
+    .section-body{
+      position:relative;
+      z-index:1;
+      padding:24px;
+    }
+    .part5-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+    .qcard{
+      overflow:hidden;
+      border:1px solid rgba(183,148,77,.26);
+      border-radius:22px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,249,237,.92));
+      box-shadow:0 14px 34px rgba(33,26,14,.08),inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .qhead{
+      padding:15px 16px;
+      background:
+        linear-gradient(180deg,rgba(249,238,215,.96),rgba(255,252,244,.82));
+      border-bottom:1px solid rgba(183,148,77,.22);
+    }
+    .qtitle{
+      margin:0;
+      display:flex;
+      gap:11px;
+      font-weight:850;
+      line-height:1.55;
+      color:#1e2433;
+    }
+    .qno{
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#1b2c4d,#101726);
+      color:#f4cf78;
+      border:1px solid rgba(215,181,109,.28);
+      font-size:13px;
+      font-weight:950;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .skill{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      min-height:24px;
+      padding:4px 9px;
+      border-radius:999px;
+      background:rgba(31,42,66,.08);
+      color:#3e4658;
+      border:1px solid rgba(183,148,77,.16);
+      font-size:12px;
+      font-weight:850;
+    }
+    .tag.blue{
+      background:rgba(33,58,105,.1);
+      color:#17305e;
+      border-color:rgba(33,58,105,.17);
+    }
+    .tag.green{
+      background:var(--green-soft);
+      color:#0f5a52;
+      border-color:rgba(31,107,95,.18);
+    }
+    .options{display:grid;gap:9px;padding:13px}
+    .option{
+      display:grid;
+      grid-template-columns:26px 1fr;
+      gap:10px;
+      align-items:start;
+      border:1px solid rgba(183,148,77,.25);
+      border-radius:16px;
+      padding:11px 12px;
+      background:rgba(255,255,255,.72);
+      cursor:pointer;
+      transition:background .14s ease,border-color .14s ease,transform .14s ease,box-shadow .14s ease;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.64);
+    }
+    .option:hover{
+      background:#fffaf1;
+      border-color:rgba(198,144,61,.55);
+      transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(70,48,18,.07),inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .option input{margin-top:4px;accent-color:#c6903d}
+    .option.selected{
+      background:linear-gradient(180deg,#fff5dc,#f9e7bb);
+      border-color:rgba(198,144,61,.72);
+      box-shadow:0 10px 22px rgba(198,144,61,.12),inset 0 1px 0 rgba(255,255,255,.85);
+    }
+    .option.correct{
+      background:linear-gradient(180deg,#edfff7,#d9f5ea);
+      border-color:rgba(31,107,95,.44);
+    }
+    .option.wrong{
+      background:linear-gradient(180deg,#fff1eb,#ffdcd2);
+      border-color:rgba(155,47,37,.44);
+    }
+    .analysis{
+      display:none;
+      border-top:1px solid rgba(183,148,77,.24);
+      padding:15px 16px;
+      background:rgba(255,252,244,.82);
+    }
+    body.review-mode .analysis{display:block}
+    .status{
+      display:inline-flex;
+      margin-bottom:10px;
+      padding:7px 11px;
+      border-radius:999px;
+      font-weight:950;
+      font-size:13px;
+      border:1px solid transparent;
+    }
+    .status.ok{
+      background:#daf8e9;
+      color:#0f5a52;
+      border-color:rgba(31,107,95,.2);
+    }
+    .status.bad{
+      background:var(--red-soft);
+      color:var(--red);
+      border-color:rgba(155,47,37,.22);
+    }
+    .abox{
+      padding:12px 13px;
+      border-radius:16px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(183,148,77,.18);
+      margin-top:9px;
+      font-size:14px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .abox strong{
+      display:block;
+      margin-bottom:4px;
+      color:#1c2435;
+      font-family:var(--serif);
+      font-size:15px;
+    }
+    .set-block{
+      overflow:hidden;
+      border:1px solid rgba(183,148,77,.28);
+      border-radius:26px;
+      background:rgba(255,252,243,.92);
+      box-shadow:0 14px 34px rgba(33,26,14,.08),var(--inner-glow);
+      margin-bottom:22px;
+    }
+    .set-title{
+      padding:17px 19px;
+      background:
+        linear-gradient(90deg,rgba(20,32,51,.96),rgba(33,58,105,.88));
+      border-bottom:1px solid rgba(215,181,109,.22);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:#fff6dc;
+    }
+    .set-title h3{
+      margin:0;
+      font-family:var(--serif);
+      font-size:19px;
+      letter-spacing:-.02em;
+    }
+    .passage,.doc{
+      padding:19px;
+      margin:17px;
+      border:1px solid rgba(183,148,77,.22);
+      border-radius:20px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,248,232,.78));
+      white-space:pre-wrap;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
+    }
+    .doc h4{margin:0 0 8px;font-size:16px;color:#1d2740}
+    .blank{
+      display:inline-flex;
+      margin:0 2px;
+      padding:0 8px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#f9e7bb,#f0cc77);
+      color:#18243a;
+      border:1px solid rgba(198,144,61,.36);
+      font-weight:950;
+    }
+    .set-questions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+      padding:0 17px 17px;
+    }
+    .bottom-nav{
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      padding:21px 24px;
+      border-top:1px solid rgba(183,148,77,.28);
+      background:linear-gradient(180deg,rgba(255,251,241,.92),rgba(243,228,197,.72));
+    }
+    .result-page{display:none;margin-top:20px}
+    body.review-mode .result-page{display:block}
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:13px;
+    }
+    .score{
+      position:relative;
+      overflow:hidden;
+      padding:20px;
+      border-radius:22px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.86),rgba(246,230,195,.72));
+      border:1px solid rgba(183,148,77,.24);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.76);
+    }
+    .score::after{
+      content:"";
+      position:absolute;
+      right:-32px;
+      top:-44px;
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(215,181,109,.30),transparent 64%);
+    }
+    .score strong{
+      position:relative;
+      z-index:1;
+      display:block;
+      font-family:var(--serif);
+      font-size:34px;
+      line-height:1;
+      letter-spacing:-.04em;
+      color:#17223a;
+    }
+    .score span{
+      position:relative;
+      z-index:1;
+      display:block;
+      margin-top:9px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:850;
+    }
+    .drawer{display:none;margin-top:20px}
+    body.show-setup #setupPanel{display:block}
+    body.show-setup.exam-mode #setupPanel{display:block}
+    body.show-setup .drawer{display:block}
+    .export-area{
+      width:100%;
+      min-height:270px;
+      border:1px solid rgba(183,148,77,.31);
+      border-radius:18px;
+      padding:13px;
+      font-family:var(--mono);
+      font-size:12px;
+      resize:vertical;
+      background:rgba(255,255,255,.7);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .toast{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:100;
+      display:grid;
+      gap:10px;
+      max-width:min(420px,calc(100vw - 28px));
+    }
+    .toast-item{
+      padding:13px 15px;
+      border-radius:16px;
+      background:rgba(14,20,34,.94);
+      color:#fff7df;
+      border:1px solid rgba(215,181,109,.25);
+      box-shadow:var(--shadow);
+      font-size:14px;
+      backdrop-filter:blur(16px);
+    }
+    .toast-item.error{background:rgba(155,47,37,.96)}
+    .toast-item.ok{background:rgba(31,107,95,.96)}
+    .hidden{display:none!important}
+
+    .decor-stage{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .decor-item{
+      position:fixed;
+      opacity:.16;
+      filter:drop-shadow(0 20px 28px rgba(7,10,20,.28));
+      transform-origin:center;
+      user-select:none;
+    }
+    .decor-item.a{top:84px;right:42px;width:124px;transform:rotate(11deg)}
+    .decor-item.b{top:280px;left:36px;width:88px;opacity:.13;transform:rotate(-8deg)}
+    .decor-item.c{bottom:94px;right:72px;width:118px;opacity:.14;transform:rotate(8deg)}
+    .decor-item.d{bottom:162px;left:48px;width:104px;opacity:.12;transform:rotate(-12deg)}
+    .hero-charm{
+      position:absolute;
+      right:38px;
+      bottom:24px;
+      width:104px;
+      opacity:.84;
+      filter:drop-shadow(0 16px 18px rgba(0,0,0,.28));
+      z-index:1;
+      pointer-events:none;
+    }
+    .lucky-modal{
+      position:fixed;
+      inset:0;
+      z-index:140;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(5,8,18,.54);
+      backdrop-filter:blur(14px);
+    }
+    body.show-lucky .lucky-modal{display:flex}
+    .lucky-card{
+      position:relative;
+      width:min(560px,calc(100vw - 32px));
+      padding:26px 26px 22px;
+      border-radius:28px;
+      border:1px solid rgba(241,207,122,.36);
+      background:linear-gradient(180deg,rgba(255,252,243,.98),rgba(248,238,217,.96));
+      box-shadow:0 30px 70px rgba(0,0,0,.28),var(--inner-glow);
+      text-align:center;
+      overflow:hidden;
+    }
+    .lucky-card::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:20px;
+      border:1px solid rgba(215,181,109,.26);
+      pointer-events:none;
+    }
+    .lucky-kicker{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:900;
+      color:#8d6931;
+    }
+    .lucky-title{
+      margin:0;
+      font-family:var(--serif);
+      font-size:32px;
+      line-height:1.1;
+      color:#17233e;
+    }
+    .lucky-sub{
+      margin:8px auto 0;
+      max-width:420px;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .lucky-art{
+      display:grid;
+      place-items:center;
+      min-height:200px;
+      margin:18px 0 10px;
+      padding:10px;
+      border-radius:24px;
+      background:radial-gradient(circle at 50% 34%,rgba(241,207,122,.42),transparent 38%),linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,251,242,.88));
+      border:1px solid rgba(215,181,109,.22);
+    }
+    .lucky-art img{
+      max-width:180px;
+      max-height:180px;
+      width:auto;
+      height:auto;
+      filter:drop-shadow(0 22px 22px rgba(49,33,12,.24));
+    }
+    .lucky-name{
+      margin:0;
+      font-family:var(--serif);
+      font-size:26px;
+      color:#1c2a49;
+    }
+    .lucky-blessing{
+      margin:10px auto 18px;
+      max-width:440px;
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.66);
+      border:1px solid rgba(183,148,77,.22);
+      color:#615540;
+    }
+
+
+    .pause-modal{
+      position:fixed;
+      inset:0;
+      z-index:130;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(5,8,18,.50);
+      backdrop-filter:blur(12px);
+    }
+    body.show-pause .pause-modal{display:flex}
+    .pause-card{
+      width:min(640px,calc(100vw - 32px));
+      padding:25px;
+      border-radius:28px;
+      border:1px solid rgba(241,207,122,.36);
+      background:linear-gradient(180deg,rgba(255,252,243,.98),rgba(248,238,217,.96));
+      box-shadow:0 30px 70px rgba(0,0,0,.28),var(--inner-glow);
+      overflow:hidden;
+      position:relative;
+    }
+    .pause-card::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:20px;
+      border:1px solid rgba(215,181,109,.22);
+      pointer-events:none;
+    }
+    .pause-card>*{position:relative;z-index:1}
+    .pause-title{
+      margin:0;
+      font-family:var(--serif);
+      font-size:29px;
+      color:#17233e;
+      letter-spacing:-.035em;
+    }
+    .pause-sub{margin:8px 0 0;color:var(--muted);font-size:14px}
+    .progress-status{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.64);
+      border:1px solid rgba(183,148,77,.22);
+      color:#4e4435;
+      font-size:13px;
+    }
+    .progress-status strong{color:#17233e}
+    .pause-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+      justify-content:flex-end;
+    }
+
+    @media(max-width:980px){
+      body{
+        background-attachment:scroll;
+      }
+    body::before{content:none}
+      .wrap{width:min(100% - 24px,1200px);padding-top:14px}
+      .hero{padding:28px 24px;border-radius:28px}
+      .hero-inner{align-items:flex-start}
+      .setup-grid,.settings,.part5-list,.set-questions,.score-grid{grid-template-columns:1fr}
+      .exam-top{border-radius:0;margin-left:-12px;margin-right:-12px;top:0}
+      .section-head,.section-body,.bottom-nav,.panel-body{padding-left:18px;padding-right:18px}
+    }
+    @media(max-width:560px){
+      .hero-actions,.setup-actions,.bottom-nav{width:100%}
+      .btn{width:100%}
+      .tabs .tab{flex:1}
+      .meter{min-width:100%}
+      .loaded-file{grid-template-columns:1fr}
+    }
+    @media print{
+      .hero,#setupPanel,.exam-top,.bottom-nav,.result-page .btn{display:none!important}
+      body{background:#fff;color:#111}
+      body::before,body::after{display:none}
+      .wrap{width:100%;padding:0}
+      .exam-card,.panel{box-shadow:none;border:0;background:#fff}
+      .section-head{background:#fff!important;color:#111;border-bottom:1px solid #bbb}
+      .directions{color:#444}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="decor-stage" aria-hidden="true">
+      <img src="assets/arcana_moon_compass.webp" alt="" class="decor-item a">
+      <img src="assets/alchemy_elixir.webp" alt="" class="decor-item b">
+      <img src="assets/alchemy_lantern.webp" alt="" class="decor-item c">
+      <img src="assets/curios_pocket_watch.webp" alt="" class="decor-item d">
+    </div>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="kicker">TOEIC Reading Exam Flow</p>
+          <h1>多益閱讀考試式播放器</h1>
+          <p>載入 Part 5、Part 6、Part 7 JSON 題庫後，使用者會直接進入連續作答流程：Part 5 → Part 6 → Part 7 → 交卷 → 分數與解析。</p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn light" id="toggleSetupBtn">題庫與設定</button>
+          <button class="btn light" id="toggleExportBtn">錯題輸出</button>
+        </div>
+      </div>
+      <img src="assets/curios_wing_crest.webp" alt="" class="hero-charm">
+    </section>
+
+    <section class="panel" id="setupPanel">
+      <div class="panel-head">
+        <h2 class="panel-title">題庫與考試設定</h2>
+        <p class="panel-sub">此區可收合。正式作答時會自動隱藏，只保留考試畫面。</p>
+      </div>
+      <div class="panel-body">
+        <div class="setup-grid">
+          <div class="upload-card" data-part="P5">
+            <span class="pill">PART 5</span>
+            <h3>Sentence Completion</h3>
+            <p>可上傳多個 Part 5 JSON。支援 items 陣列。</p>
+            <div class="mini-row">
+              <div class="mini"><strong id="P5Files">0</strong><span>檔案</span></div>
+              <div class="mini"><strong id="P5Questions">0</strong><span>題目</span></div>
+            </div>
+            <input class="file-input" id="P5Input" type="file" accept=".json,application/json" multiple>
+          </div>
+          <div class="upload-card" data-part="P6">
+            <span class="pill">PART 6</span>
+            <h3>Text Completion</h3>
+            <p>可上傳多個 Part 6 JSON。支援 sets 陣列。</p>
+            <div class="mini-row">
+              <div class="mini"><strong id="P6Files">0</strong><span>檔案</span></div>
+              <div class="mini"><strong id="P6Questions">0</strong><span>題目</span></div>
+            </div>
+            <input class="file-input" id="P6Input" type="file" accept=".json,application/json" multiple>
+          </div>
+          <div class="upload-card" data-part="P7_SINGLE">
+            <span class="pill">PART 7｜單篇</span>
+            <h3>Single Passage</h3>
+            <p>上傳 Part 7 單篇 JSON。每組需有 1 篇 document + questions。</p>
+            <div class="mini-row">
+              <div class="mini"><strong id="P7_SINGLEFiles">0</strong><span>檔案</span></div>
+              <div class="mini"><strong id="P7_SINGLEQuestions">0</strong><span>題目</span></div>
+            </div>
+            <input class="file-input" id="P7_SINGLEInput" type="file" accept=".json,application/json" multiple>
+          </div>
+          <div class="upload-card" data-part="P7_DOUBLE">
+            <span class="pill">PART 7｜雙篇</span>
+            <h3>Double Passage</h3>
+            <p>上傳 Part 7 雙篇 JSON。每組需有 2 篇 documents + questions。</p>
+            <div class="mini-row">
+              <div class="mini"><strong id="P7_DOUBLEFiles">0</strong><span>檔案</span></div>
+              <div class="mini"><strong id="P7_DOUBLEQuestions">0</strong><span>題目</span></div>
+            </div>
+            <input class="file-input" id="P7_DOUBLEInput" type="file" accept=".json,application/json" multiple>
+          </div>
+          <div class="upload-card" data-part="P7_TRIPLE">
+            <span class="pill">PART 7｜三篇</span>
+            <h3>Triple Passage</h3>
+            <p>上傳 Part 7 三篇 JSON。每組需有 3 篇 documents + questions。</p>
+            <div class="mini-row">
+              <div class="mini"><strong id="P7_TRIPLEFiles">0</strong><span>檔案</span></div>
+              <div class="mini"><strong id="P7_TRIPLEQuestions">0</strong><span>題目</span></div>
+            </div>
+            <input class="file-input" id="P7_TRIPLEInput" type="file" accept=".json,application/json" multiple>
+          </div>
+        </div>
+
+        <div class="settings">
+          <div class="field">
+            <label>Part 5 抽題數</label>
+            <input id="p5Limit" type="number" min="0" value="30">
+          </div>
+          <div class="field">
+            <label>Part 6 抽題篇數</label>
+            <input id="p6Limit" type="number" min="0" value="4">
+          </div>
+          <div class="field">
+            <label>Part 7 單篇抽題組數</label>
+            <input id="p7SingleLimit" type="number" min="0" value="7">
+          </div>
+          <div class="field">
+            <label>Part 7 雙篇抽題組數</label>
+            <input id="p7DoubleLimit" type="number" min="0" value="3">
+          </div>
+          <div class="field">
+            <label>Part 7 三篇抽題組數</label>
+            <input id="p7TripleLimit" type="number" min="0" value="4">
+          </div>
+          <div class="field">
+            <label>出題方式</label>
+            <select id="orderMode">
+              <option value="shuffle">隨機抽取</option>
+              <option value="inorder">依上傳順序</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setup-actions">
+          <div style="color:var(--muted);font-size:13px">預設抽選：Part 5 30 題；Part 6 4 篇＝16 題；Part 7 單篇 7 組＝28 題、雙篇 3 組＝12 題、三篇 4 組＝16 題。Part 6／7 皆以完整題組抽選，不切文章。</div>
+          <div class="hero-actions">
+            <button class="btn ghost" id="defaultLimitsBtn">恢復預設抽選</button>
+            <button class="btn secondary" id="rerollExamBtn">重置抽選</button>
+            <button class="btn secondary" id="clearExamBtn">清空目前作答</button>
+            <button class="btn green" id="startExamBtn">開始連續作答</button>
+          </div>
+        </div>
+
+        <div class="setup-actions">
+          <div style="color:var(--muted);font-size:13px">題庫存取：上傳成功後會自動保存到此瀏覽器；也可手動儲存、讀取或清除已保存題庫。</div>
+          <div class="hero-actions">
+            <button class="btn ghost" id="saveBanksBtn">儲存題庫</button>
+            <button class="btn ghost" id="loadBanksBtn">讀取已存題庫</button>
+            <button class="btn red" id="clearSavedBanksBtn">清除已存題庫</button>
+          </div>
+        </div>
+
+        <div class="setup-actions">
+          <div style="color:var(--muted);font-size:13px">作答進度：開始作答後可暫停、匯出進度 JSON，或讀取進度檔繼續同一組題目；此進度尚未寫入錯題檢討。</div>
+          <div class="hero-actions">
+            <button class="btn green" id="continueSavedProgressBtn">繼續已存進度</button>
+            <button class="btn ghost" id="downloadProgressSetupBtn">匯出目前進度</button>
+            <button class="btn ghost" id="loadProgressBtn">讀取進度 JSON</button>
+            <button class="btn red" id="clearSavedProgressBtn">清除已存進度</button>
+            <input class="hidden" id="progressInput" type="file" accept=".json,application/json">
+          </div>
+        </div>
+        <div class="progress-status" id="progressStatus">尚未偵測到可繼續的作答進度。</div>
+
+        <div class="loaded-list" id="loadedList"></div>
+      </div>
+    </section>
+
+    <section class="exam-top" id="examTop">
+      <div class="exam-top-row">
+        <div class="tabs" id="partTabs"></div>
+        <div class="meter">
+          <div class="meter-meta"><span id="meterText">0 / 0 已作答</span><span id="timerText">00:00</span></div>
+          <div class="bar"><div id="meterFill"></div></div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn ghost" id="pauseExamTopBtn">暫停／儲存</button>
+          <button class="btn ghost" id="setupDuringExamBtn">題庫與設定</button>
+          <button class="btn green" id="submitExamTopBtn">交卷</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="exam-screen" id="examScreen">
+      <section class="exam-card">
+        <div class="section-head">
+          <h2 id="sectionTitle">Part</h2>
+          <p class="directions" id="sectionDirections"></p>
+        </div>
+        <div class="section-body" id="sectionBody"></div>
+        <div class="bottom-nav">
+          <button class="btn secondary" id="prevPartBtn">上一部分</button>
+          <div class="hero-actions">
+            <button class="btn ghost" id="jumpUnansweredBtn">跳到未作答</button>
+            <button class="btn" id="nextPartBtn">下一部分</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="result-page" id="resultPage">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">成績總覽</h2>
+          <p class="panel-sub">交卷後會顯示解析，錯題會寫入瀏覽器 localStorage，並可輸出純文字。</p>
+        </div>
+        <div class="panel-body">
+          <div class="score-grid" id="scoreGrid"></div>
+          <div class="setup-actions">
+            <button class="btn" id="copyWrongBtn">複製錯題文字</button>
+            <button class="btn secondary" id="downloadWrongBtn">下載錯題 TXT</button>
+            <button class="btn red" id="clearWrongBtn">清除歷史錯題</button>
+          </div>
+          <div class="field" style="margin-top:14px">
+            <label>歷史錯題輸出</label>
+            <textarea id="wrongExport" class="export-area" readonly></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel drawer" id="exportDrawer">
+      <div class="panel-head">
+        <h2 class="panel-title">歷史錯題輸出</h2>
+        <p class="panel-sub">純文字格式，適合直接交給 AI 分析弱點。</p>
+      </div>
+      <div class="panel-body">
+        <div class="setup-actions" style="margin-top:0">
+          <button class="btn secondary" id="refreshWrongBtn">重新整理文字</button>
+          <button class="btn" id="copyWrongBtn2">複製</button>
+          <button class="btn ghost" id="downloadWrongBtn2">下載 TXT</button>
+        </div>
+        <textarea id="wrongExportDrawer" class="export-area" readonly></textarea>
+      </div>
+    </section>
+  </div>
+
+
+  <div class="pause-modal" id="pauseModal" aria-hidden="true">
+    <div class="pause-card" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
+      <h3 class="pause-title" id="pauseTitle">作答已暫停</h3>
+      <p class="pause-sub">目前題組與答案已可保存。關閉視窗前，建議先匯出一份進度 JSON；同一瀏覽器也會保留一份暫存進度。</p>
+      <div class="progress-status" id="pauseProgressStatus">尚未建立作答進度。</div>
+      <div class="pause-actions">
+        <button class="btn ghost" id="saveProgressBtn">儲存到此瀏覽器</button>
+        <button class="btn secondary" id="downloadProgressBtn">下載進度 JSON</button>
+        <button class="btn ghost" id="loadProgressBtn2">讀取進度 JSON</button>
+        <button class="btn green" id="resumeExamBtn">繼續作答</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="lucky-modal" id="luckyModal" aria-hidden="true">
+    <div class="lucky-card" role="dialog" aria-modal="true" aria-labelledby="luckyTitle">
+      <p class="lucky-kicker">Fortune Token</p>
+      <h3 class="lucky-title" id="luckyTitle">幸運物現身</h3>
+      <p class="lucky-sub" id="luckyLead">你完成了一個 Part。</p>
+      <div class="lucky-art"><img id="luckyImage" alt="幸運物"></div>
+      <p class="lucky-name" id="luckyName">幸運物</p>
+      <div class="lucky-blessing" id="luckyBlessing">願你接下來思路清晰、節奏穩定。</div>
+      <button class="btn" id="luckyCloseBtn">收下幸運物</button>
+    </div>
+  </div>
+
+<script>
+const STORAGE_KEY = "toeic_exam_flow_wrong_history_v1";
+const BANK_STORAGE_KEY = "toeic_exam_flow_question_banks_v2";
+const PROGRESS_STORAGE_KEY = "toeic_exam_flow_current_progress_v1";
+const PROGRESS_FILE_TYPE = "toeic_exam_flow_progress";
+const UPLOAD_PART_KEYS = ["P5","P6","P7_SINGLE","P7_DOUBLE","P7_TRIPLE"];
+const DEFAULT_LIMITS = {p5Limit:30,p6Limit:4,p7SingleLimit:7,p7DoubleLimit:3,p7TripleLimit:4};
+const P7_CONFIG = {
+  P7_SINGLE:{label:"P7 單篇", docs:1, defaultGroups:7, expectedQuestions:28},
+  P7_DOUBLE:{label:"P7 雙篇", docs:2, defaultGroups:3, expectedQuestions:12},
+  P7_TRIPLE:{label:"P7 三篇", docs:3, defaultGroups:4, expectedQuestions:16}
+};
+const MOTIVATION_MESSAGES = [
+  "節奏很好，穩住就會累積成分數。",
+  "你正在把題感練得更精準，繼續保持。",
+  "每一題都是判讀力的訓練，現在的專注很有價值。",
+  "速度不用慌，答案會在穩定閱讀裡浮出來。",
+  "已經推進一大段了，下一組文章也照這個節奏走。",
+  "很好，錯題也會變成下一輪進步的線索。"
+];
+const app = {
+  libraries:loadSavedQuestionBanks(),
+  exam:null,
+  currentPart:0,
+  wrongHistory:loadWrongHistory(),
+  timer:null,
+  pendingLuckyAction:null
+};
+
+
+const LUCKY_CHARMS = {
+  P5:{
+    name:"節奏懷錶",
+    image:"assets/curios_pocket_watch.webp",
+    lead:"你已完成 Part 5。這枚幸運物提醒你：速度與準確可以並存。",
+    blessing:"懷錶的祝福：保持節奏，不急不亂，下一部分也能穩穩拿分。"
+  },
+  P6:{
+    name:"澄明水晶球",
+    image:"assets/arcana_crystal_ball.webp",
+    lead:"你已完成 Part 6。這顆幸運物象徵語境感與整體判讀力。",
+    blessing:"水晶球的祝福：看得更遠，也看得更準；細節與脈絡都會站在你這邊。"
+  },
+  P7:{
+    name:"洞見提燈",
+    image:"assets/alchemy_lantern.webp",
+    lead:"你已完成 Part 7。最後的幸運物，獻給完成整場閱讀挑戰的你。",
+    blessing:"提燈的祝福：願你的理解、推論與判讀，都被清晰的光照亮。"
+  }
+};
+
+const PARTS = [
+  {key:"P5", title:"Part 5｜Incomplete Sentences", directions:"Directions: Select the best answer to complete each sentence."},
+  {key:"P6", title:"Part 6｜Text Completion", directions:"Directions: Read each text and select the best answer for each blank."},
+  {key:"P7", title:"Part 7｜Reading Comprehension", directions:"Directions: Read the documents and select the best answer to each question."}
+];
+
+function $(id){return document.getElementById(id)}
+function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+function fmt(v){return esc(v).replace(/\[\[(Q\d+)\]\]/g,'<span class="blank">[[$1]]</span>')}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h+=(h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24)}return (h>>>0).toString(16)}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+function toast(msg,type=""){const box=$("toast"),el=document.createElement("div");el.className=`toast-item ${type}`;el.textContent=msg;box.appendChild(el);setTimeout(()=>{el.style.opacity=0;setTimeout(()=>el.remove(),220)},3300)}
+function emptyLibraries(){return Object.fromEntries(UPLOAD_PART_KEYS.map(k=>[k,[]]))}
+function partLabel(key){return key==="P5"?"P5":key==="P6"?"P6":(P7_CONFIG[key]?.label||key)}
+function loadWrongHistory(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch{return[]}}
+function loadSavedQuestionBanks(){
+  const base=emptyLibraries();
+  try{
+    const saved=JSON.parse(localStorage.getItem(BANK_STORAGE_KEY)||"null");
+    const libs=saved?.libraries||{};
+    for(const key of UPLOAD_PART_KEYS){base[key]=Array.isArray(libs[key])?libs[key]:[]}
+  }catch{}
+  return base;
+}
+function saveQuestionBanks(showToast=true){
+  try{
+    localStorage.setItem(BANK_STORAGE_KEY,JSON.stringify({version:2,savedAt:new Date().toISOString(),libraries:app.libraries}));
+    if(showToast)toast("題庫已儲存到此瀏覽器。","ok");
+    return true;
+  }catch(e){
+    toast("題庫儲存失敗：瀏覽器空間不足或資料過大。","error");
+    return false;
+  }
+}
+function loadQuestionBanksFromStorage(showToast=true){
+  app.libraries=loadSavedQuestionBanks();
+  renderCounts(); renderLoadedList();
+  if(showToast)toast("已讀取此瀏覽器保存的題庫。","ok");
+}
+function clearSavedQuestionBanks(){
+  if(confirm("確定清除瀏覽器中已保存的題庫？目前畫面已載入的題庫不會被移除。")){
+    localStorage.removeItem(BANK_STORAGE_KEY);
+    toast("已清除已保存題庫。","ok");
+  }
+}
+function saveWrongHistory(){localStorage.setItem(STORAGE_KEY,JSON.stringify(app.wrongHistory));renderWrongExports();renderCounts()}
+
+function examQuestionEntries(exam){
+  if(!exam?.sections)return[];
+  return exam.sections.flatMap(sec=>(sec.groups||[]).flatMap(g=>(g.questions||[]).map(q=>({sec,g,q}))));
+}
+function answeredCountForExam(exam){
+  const answers=exam?.answers||{};
+  return examQuestionEntries(exam).filter(x=>answers[x.q.uid]).length;
+}
+function elapsedSecondsForExam(exam){
+  if(!exam?.startedAt)return 0;
+  const totalPaused=Number(exam.totalPausedMs||0);
+  const now=exam.paused&&exam.pausedAt?Number(exam.pausedAt):Date.now();
+  return Math.max(0,Math.floor((now-Number(exam.startedAt)-totalPaused)/1000));
+}
+function formatSeconds(total){
+  const s=Math.max(0,Math.floor(total||0)),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),r=s%60;
+  return h?`${h}:${String(m).padStart(2,"0")}:${String(r).padStart(2,"0")}`:`${String(m).padStart(2,"0")}:${String(r).padStart(2,"0")}`;
+}
+function localDateTime(v){
+  if(!v)return "";
+  try{return new Date(v).toLocaleString("zh-TW",{hour12:false})}catch{return String(v)}
+}
+function makeProgressPayload(){
+  if(!app.exam)throw new Error("目前沒有可保存的作答進度");
+  const savedAt=new Date().toISOString();
+  app.exam.progressSavedAt=savedAt;
+  return {
+    type:PROGRESS_FILE_TYPE,
+    version:1,
+    savedAt,
+    currentPart:app.currentPart,
+    settings:{
+      p5Limit:Number($("p5Limit")?.value||0),
+      p6Limit:Number($("p6Limit")?.value||0),
+      p7SingleLimit:Number($("p7SingleLimit")?.value||0),
+      p7DoubleLimit:Number($("p7DoubleLimit")?.value||0),
+      p7TripleLimit:Number($("p7TripleLimit")?.value||0),
+      orderMode:$("orderMode")?.value||"shuffle"
+    },
+    summary:progressSummary({exam:app.exam,currentPart:app.currentPart,savedAt}),
+    exam:app.exam
+  };
+}
+function progressSummary(progress){
+  const exam=progress?.exam;
+  if(!exam)return {total:0,answered:0,elapsed:0,currentPart:"",startedAt:"",savedAt:""};
+  const sections=exam.sections||[];
+  const current=sections[Math.max(0,Math.min(Number(progress.currentPart||0),Math.max(sections.length-1,0)))]?.key||"";
+  return {
+    total:examQuestionEntries(exam).length,
+    answered:answeredCountForExam(exam),
+    elapsed:elapsedSecondsForExam(exam),
+    currentPart:current,
+    startedAt:exam.startedAt?new Date(exam.startedAt).toISOString():"",
+    savedAt:progress.savedAt||exam.progressSavedAt||""
+  };
+}
+function progressStatusText(progress, emptyText="尚未偵測到可繼續的作答進度。"){
+  if(!progress?.exam)return emptyText;
+  const s=progress.summary||progressSummary(progress);
+  const saved=s.savedAt?`｜保存：${localDateTime(s.savedAt)}`:"";
+  const started=s.startedAt?`｜開始：${localDateTime(s.startedAt)}`:"";
+  return `目前 Part：${s.currentPart||"-"}｜已作答：${s.answered}/${s.total}｜作答時間：${formatSeconds(s.elapsed)}${started}${saved}`;
+}
+function loadProgressFromStorage(){
+  try{
+    const raw=localStorage.getItem(PROGRESS_STORAGE_KEY);
+    if(!raw)return null;
+    const data=JSON.parse(raw);
+    if(!data?.exam||!Array.isArray(data.exam.sections))return null;
+    return data;
+  }catch{return null}
+}
+function saveProgressToStorage(showToast=true){
+  if(!app.exam||app.exam.submitted){
+    if(showToast)toast("目前沒有尚未交卷的作答進度可保存。","error");
+    renderProgressStatus();
+    return false;
+  }
+  try{
+    localStorage.setItem(PROGRESS_STORAGE_KEY,JSON.stringify(makeProgressPayload()));
+    renderProgressStatus();
+    if(showToast)toast("目前作答進度已儲存到此瀏覽器。","ok");
+    return true;
+  }catch(e){
+    renderProgressStatus();
+    if(showToast)toast("進度儲存失敗：瀏覽器空間不足。請改用下載進度 JSON。","error");
+    return false;
+  }
+}
+function clearProgressStorage(showToast=true){
+  localStorage.removeItem(PROGRESS_STORAGE_KEY);
+  renderProgressStatus();
+  if(showToast)toast("已清除瀏覽器中的作答進度。","ok");
+}
+function clearSavedProgress(){
+  if(confirm("確定清除瀏覽器中已保存的作答進度？目前畫面上的作答不會被清除。"))clearProgressStorage(true);
+}
+function renderProgressStatus(){
+  const saved=loadProgressFromStorage();
+  const current=app.exam&&!app.exam.submitted?{exam:app.exam,currentPart:app.currentPart,savedAt:app.exam.progressSavedAt}:null;
+  const status=$('progressStatus');
+  if(status){
+    const text=saved?progressStatusText(saved):"尚未偵測到可繼續的作答進度。";
+    status.innerHTML=saved?`<strong>已存進度</strong>｜${esc(text)}`:esc(text);
+  }
+  const pauseStatus=$('pauseProgressStatus');
+  if(pauseStatus){
+    const text=current?progressStatusText(current,"目前沒有可保存的作答進度。"):progressStatusText(saved,"目前沒有可保存的作答進度。");
+    pauseStatus.innerHTML=current?`<strong>目前暫停進度</strong>｜${esc(text)}`:(saved?`<strong>已存進度</strong>｜${esc(text)}`:esc(text));
+  }
+  if($('continueSavedProgressBtn'))$('continueSavedProgressBtn').disabled=!saved;
+  if($('clearSavedProgressBtn'))$('clearSavedProgressBtn').disabled=!saved;
+  if($('downloadProgressSetupBtn'))$('downloadProgressSetupBtn').disabled=!(app.exam&&!app.exam.submitted);
+  if($('downloadProgressBtn'))$('downloadProgressBtn').disabled=!(app.exam&&!app.exam.submitted);
+  if($('saveProgressBtn'))$('saveProgressBtn').disabled=!(app.exam&&!app.exam.submitted);
+}
+function downloadProgress(){
+  if(!app.exam||app.exam.submitted){toast("目前沒有尚未交卷的作答進度可匯出。","error");return}
+  const payload=makeProgressPayload();
+  saveProgressToStorage(false);
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json;charset=utf-8"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;
+  a.download=`toeic_exam_progress_${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.json`;
+  a.click();URL.revokeObjectURL(url);
+  toast("已下載目前作答進度 JSON。","ok");
+}
+function normalizeProgressPayload(data){
+  const payload=data?.type===PROGRESS_FILE_TYPE?data:data?.exam?data:null;
+  if(!payload?.exam||!Array.isArray(payload.exam.sections))throw new Error("這不是有效的作答進度檔");
+  if(!payload.exam.sections.every(sec=>sec&&Array.isArray(sec.groups)))throw new Error("作答進度檔的題組資料不完整");
+  payload.exam.answers=payload.exam.answers&&typeof payload.exam.answers==="object"?payload.exam.answers:{};
+  payload.exam.luckyShown=payload.exam.luckyShown&&typeof payload.exam.luckyShown==="object"?payload.exam.luckyShown:{};
+  payload.exam.motivation=payload.exam.motivation&&typeof payload.exam.motivation==="object"?payload.exam.motivation:{answerMilestone:0,timeMilestone:0};
+  payload.currentPart=Number.isFinite(Number(payload.currentPart))?Number(payload.currentPart):0;
+  return payload;
+}
+function applyProgressPayload(data,showToast=true){
+  const payload=normalizeProgressPayload(data);
+  if(app.exam&&!app.exam.submitted&&answeredCount()>0&&!confirm("目前畫面已有未交卷的作答進度，讀取新進度會取代它。確定繼續？"))return;
+  const exam=payload.exam;
+  exam.totalPausedMs=Number(exam.totalPausedMs||0);
+  const savedMs=Date.parse(payload.savedAt||exam.progressSavedAt||"");
+  if(exam.paused&&exam.pausedAt){
+    exam.totalPausedMs+=Math.max(0,Date.now()-Number(exam.pausedAt||Date.now()));
+  }else if(!exam.submitted&&Number.isFinite(savedMs)){
+    exam.totalPausedMs+=Math.max(0,Date.now()-savedMs);
+  }
+  exam.paused=false; exam.pausedAt=null;
+  app.exam=exam;
+  app.currentPart=Math.max(0,Math.min(payload.currentPart,Math.max(app.exam.sections.length-1,0)));
+  document.body.classList.add("exam-mode");
+  document.body.classList.remove("show-setup","show-pause");
+  if(app.exam.submitted){stopTimer();document.body.classList.add("review-mode")}else{document.body.classList.remove("review-mode");startTimer();saveProgressToStorage(false)}
+  renderExam();renderLoadedList();goExamTop();
+  if(showToast)toast("已讀取作答進度，並恢復同一組題目與已填答案。","ok");
+}
+function continueSavedProgress(){
+  const saved=loadProgressFromStorage();
+  if(!saved){toast("目前沒有瀏覽器保存的作答進度。","error");renderProgressStatus();return}
+  applyProgressPayload(saved,true);
+}
+function triggerProgressInput(){
+  if($('progressInput')){$('progressInput').value="";$('progressInput').click()}
+}
+async function handleProgressFile(files){
+  const file=Array.from(files||[])[0];
+  if(!file)return;
+  try{
+    const json=JSON.parse(await readFile(file));
+    applyProgressPayload(json,true);
+  }catch(e){toast(`進度檔讀取失敗：${e.message}`,"error")}
+}
+function pauseExam(){
+  if(!app.exam||app.exam.submitted)return;
+  if(!app.exam.paused){app.exam.paused=true;app.exam.pausedAt=Date.now();stopTimer()}
+  saveProgressToStorage(false);
+  document.body.classList.add("show-pause");
+  document.body.classList.remove("show-lucky");
+  renderExam();renderProgressStatus();
+  toast("作答已暫停，進度已暫存到此瀏覽器。","ok");
+}
+function resumeExam(){
+  if(!app.exam||app.exam.submitted){document.body.classList.remove("show-pause");return}
+  if(app.exam.paused){
+    app.exam.totalPausedMs=Number(app.exam.totalPausedMs||0)+Math.max(0,Date.now()-Number(app.exam.pausedAt||Date.now()));
+    app.exam.paused=false; app.exam.pausedAt=null;
+  }
+  document.body.classList.remove("show-pause");
+  startTimer();saveProgressToStorage(false);renderExam();goExamTop();
+  toast("已繼續作答。","ok");
+}
+function handleBeforeUnload(e){
+  if(app.exam&&!app.exam.submitted){
+    saveProgressToStorage(false);
+    e.preventDefault();
+    e.returnValue="";
+    return "";
+  }
+}
+function readFile(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result||""));r.onerror=()=>rej(r.error||new Error("讀取失敗"));r.readAsText(file,"utf-8")})}
+
+async function handleFiles(partKey, files){
+  let ok=0, bad=0;
+  for(const file of Array.from(files||[])){
+    try{
+      if(!file.name.toLowerCase().endsWith(".json")) throw new Error("只接受 .json；ZIP 請先解壓縮");
+      const json=JSON.parse(await readFile(file));
+      const ds=normalizeDataset(partKey,json,file.name);
+      app.libraries[partKey].push(ds); ok++;
+    }catch(e){bad++;toast(`${file.name} 匯入失敗：${e.message}`,"error")}
+  }
+  if(ok){const saved=saveQuestionBanks(false);toast(`已匯入 ${ok} 個 ${partLabel(partKey)} 題庫${saved?"，並已自動保存":"，但自動保存失敗"}。`,saved?"ok":"error")}
+  if(bad)toast(`${bad} 個檔案匯入失敗。`,"error");
+  renderCounts(); renderLoadedList();
+}
+
+function normalizeOptions(o){
+  if(!o||typeof o!=="object")throw new Error("題目缺少 options");
+  const r={}; for(const k of ["A","B","C","D"]){if(!(k in o))throw new Error(`選項缺少 ${k}`); r[k]=String(o[k])}
+  return r;
+}
+function normalizeQuestion(raw,ctx){
+  const ans=String(raw.answer||"").trim().toUpperCase();
+  if(!["A","B","C","D"].includes(ans))throw new Error(`answer 必須是 A/B/C/D`);
+  const id=raw.id||`${ctx.groupId}_Q${ctx.index+1}`;
+  return {
+    uid:hash(`${ctx.source}|${ctx.groupId}|${id}|${ctx.index}`), id,
+    part:ctx.part, generator_part:raw.generator_part||ctx.generatorPart||"", difficulty:raw.difficulty||ctx.difficulty||"",
+    domain:raw.domain||ctx.domain||"", tags:Array.isArray(raw.tags)?raw.tags:[], blank:raw.blank||"", skill:raw.skill||"",
+    question:String(raw.question||"Choose the best answer."), options:normalizeOptions(raw.options), answer:ans,
+    explanation_zh:String(raw.explanation_zh||raw.explanation||""), distractor_notes:raw.distractor_notes&&typeof raw.distractor_notes==="object"?raw.distractor_notes:{},
+    evidence:Array.isArray(raw.evidence)?raw.evidence:[]
+  }
+}
+function normalizeDataset(partKey,json,fileName){
+  if(partKey==="P5")return normalizeP5(json,fileName);
+  if(partKey==="P6")return normalizeP6(json,fileName);
+  if(P7_CONFIG[partKey])return normalizeP7(json,fileName,partKey);
+  throw new Error(`未知題庫類型：${partKey}`);
+}
+function normalizeP5(json,fileName){
+  if(!Array.isArray(json.items))throw new Error("Part 5 必須包含 items 陣列");
+  const gp=json.generator_part||"P5_UNKNOWN", diff=json.difficulty||"", dsid=hash(`P5|${fileName}|${Date.now()}|${Math.random()}`);
+  const groups=json.items.map((it,i)=>{
+    const gid=it.id||`${gp}_${String(i+1).padStart(4,"0")}`;
+    const q=normalizeQuestion(it,{source:fileName,groupId:gid,index:i,part:"P5_SENTENCE_COMPLETION",generatorPart:gp,difficulty:diff,domain:it.domain||""});
+    return {uid:hash(`${dsid}|${gid}`),partKey:"P5",kind:"single",part:"P5_SENTENCE_COMPLETION",generator_part:it.generator_part||gp,difficulty:it.difficulty||diff,sourceFile:fileName,id:gid,title:gid,domain:it.domain||"",questions:[q]};
+  });
+  return {id:dsid,fileName,partKey:"P5",generator_part:gp,difficulty:diff,groups,questionCount:groups.length};
+}
+function normalizeP6(json,fileName){
+  if(!Array.isArray(json.sets))throw new Error("Part 6 必須包含 sets 陣列");
+  const gp=json.generator_part||"P6_UNKNOWN", diff=json.difficulty||"", dsid=hash(`P6|${fileName}|${Date.now()}|${Math.random()}`);
+  const groups=json.sets.map((set,i)=>{
+    if(!Array.isArray(set.questions))throw new Error("Part 6 set 缺少 questions");
+    const gid=set.id||`${gp}_SET_${String(i+1).padStart(4,"0")}`;
+    return {uid:hash(`${dsid}|${gid}`),partKey:"P6",kind:"text",part:"P6_TEXT_COMPLETION",generator_part:set.generator_part||gp,difficulty:set.difficulty||diff,sourceFile:fileName,id:gid,title:set.title||gid,domain:set.domain||"",document_type:set.document_type||"text",text:String(set.text||""),questions:set.questions.map((q,qi)=>normalizeQuestion(q,{source:fileName,groupId:gid,index:qi,part:"P6_TEXT_COMPLETION",generatorPart:set.generator_part||gp,difficulty:set.difficulty||diff,domain:set.domain||""}))};
+  });
+  return {id:dsid,fileName,partKey:"P6",generator_part:gp,difficulty:diff,groups,questionCount:groups.reduce((s,g)=>s+g.questions.length,0)};
+}
+function normalizeP7(json,fileName,partKey){
+  if(!Array.isArray(json.sets))throw new Error("Part 7 必須包含 sets 陣列");
+  const cfg=P7_CONFIG[partKey]||{label:"P7",docs:null};
+  const gp=json.generator_part||`${partKey}_UNKNOWN`, diff=json.difficulty||"", dsid=hash(`${partKey}|${fileName}|${Date.now()}|${Math.random()}`);
+  const groups=json.sets.map((set,i)=>{
+    if(!Array.isArray(set.questions))throw new Error(`${cfg.label} set 缺少 questions`);
+    if(!Array.isArray(set.documents))throw new Error(`${cfg.label} set 缺少 documents`);
+    const gid=set.id||`${gp}_SET_${String(i+1).padStart(4,"0")}`;
+    if(cfg.docs && set.documents.length!==cfg.docs)throw new Error(`${cfg.label} 題組 ${gid} 必須包含 ${cfg.docs} 篇 documents，目前是 ${set.documents.length} 篇`);
+    return {uid:hash(`${dsid}|${gid}`),partKey,partLabel:cfg.label,kind:"reading",part:"P7_READING_COMPREHENSION",generator_part:set.generator_part||gp,difficulty:set.difficulty||diff,sourceFile:fileName,id:gid,title:set.title||gid,domain:set.domain||"",documents:set.documents.map((d,di)=>({doc_id:d.doc_id||String.fromCharCode(65+di),document_type:d.document_type||"document",title:d.title||`Document ${String.fromCharCode(65+di)}`,text:String(d.text||"")})),questions:set.questions.map((q,qi)=>normalizeQuestion(q,{source:fileName,groupId:gid,index:qi,part:"P7_READING_COMPREHENSION",generatorPart:set.generator_part||gp,difficulty:set.difficulty||diff,domain:set.domain||""}))};
+  });
+  return {id:dsid,fileName,partKey,partLabel:cfg.label,generator_part:gp,difficulty:diff,groups,questionCount:groups.reduce((s,g)=>s+g.questions.length,0)};
+}
+
+function collect(partKey){return app.libraries[partKey].flatMap(d=>d.groups)}
+function qCount(groups){return groups.reduce((s,g)=>s+g.questions.length,0)}
+function makeSelection(partKey,limit){
+  let groups=collect(partKey);
+  if($("orderMode").value==="shuffle")groups=shuffle(groups);
+  const n=Number(limit||0);
+  if(n>0)groups=groups.slice(0,Math.min(n,groups.length));
+  return groups;
+}
+
+function goExamTop(){window.scrollTo({top:$("examTop").offsetTop,behavior:"smooth"})}
+function showLuckyCharm(partKey, done){
+  const cfg=LUCKY_CHARMS[partKey];
+  if(!cfg){if(done)done();return}
+  $("luckyTitle").textContent=`${partKey} 幸運物`;
+  $("luckyLead").textContent=cfg.lead;
+  $("luckyImage").src=cfg.image;
+  $("luckyName").textContent=cfg.name;
+  $("luckyBlessing").textContent=cfg.blessing;
+  app.pendingLuckyAction=done||null;
+  document.body.classList.add("show-lucky");
+  $("luckyModal").setAttribute("aria-hidden","false");
+}
+function closeLuckyCharm(){
+  document.body.classList.remove("show-lucky");
+  $("luckyModal").setAttribute("aria-hidden","true");
+  const action=app.pendingLuckyAction;
+  app.pendingLuckyAction=null;
+  if(action)action();
+}
+function revealLuckyForCurrentPart(nextAction){
+  if(!app.exam)return nextAction&&nextAction();
+  const sec=app.exam.sections[app.currentPart];
+  if(!sec || !sectionQuestionCount(sec) || app.exam.luckyShown?.[sec.key]){if(nextAction)nextAction();return}
+  app.exam.luckyShown[sec.key]=true;
+  showLuckyCharm(sec.key,nextAction);
+}
+
+function startExam(){
+  const p5=makeSelection("P5",$("p5Limit").value);
+  const p6=makeSelection("P6",$("p6Limit").value);
+  const p7Single=makeSelection("P7_SINGLE",$("p7SingleLimit").value);
+  const p7Double=makeSelection("P7_DOUBLE",$("p7DoubleLimit").value);
+  const p7Triple=makeSelection("P7_TRIPLE",$("p7TripleLimit").value);
+  const p7=[...p7Single,...p7Double,...p7Triple];
+  if(!p5.length&&!p6.length&&!p7.length){toast("請先上傳至少一個題庫 JSON，或讀取已存題庫。","error");return}
+  app.exam={id:`EXAM_${Date.now()}`,startedAt:Date.now(),submitted:false,logged:false,paused:false,pausedAt:null,totalPausedMs:0,progressSavedAt:null,answers:{},luckyShown:{},motivation:{answerMilestone:0,timeMilestone:0},sections:[
+    {key:"P5",groups:p5},{key:"P6",groups:p6},{key:"P7",groups:p7}
+  ]};
+  app.currentPart=p5.length?0:(p6.length?1:2);
+  document.body.classList.add("exam-mode");
+  document.body.classList.remove("show-setup","review-mode","show-pause");
+  startTimer();
+  saveProgressToStorage(false);
+  renderExam();
+  goExamTop();
+  toast("新的抽選已準備好。保持穩定節奏，開始作答。","ok");
+}
+function clearExam(){
+  app.exam=null;app.currentPart=0;stopTimer();
+  document.body.classList.remove("exam-mode","review-mode","show-pause");
+  clearProgressStorage(false);
+  renderExam();renderCounts();toast("已清空目前作答。","ok");
+}
+function applyDefaultLimits(showToast=true){
+  for(const [id,val] of Object.entries(DEFAULT_LIMITS)){if($(id))$(id).value=val}
+  if(showToast)toast("已恢復預設抽選配置。","ok");
+}
+function hasAnyBank(){return UPLOAD_PART_KEYS.some(k=>(app.libraries[k]||[]).length)}
+function rerollExam(){
+  if(!hasAnyBank()){toast("請先上傳或讀取題庫，再重置抽選。","error");return}
+  if(app.exam&&!app.exam.submitted&&answeredCount()>0&&!confirm("重置抽選會清空目前作答並重新抽題，確定繼續？"))return;
+  startExam();
+}
+function allQuestions(){
+  if(!app.exam)return[];
+  return app.exam.sections.flatMap(sec=>sec.groups.flatMap(g=>g.questions.map(q=>({sec,g,q}))));
+}
+function answeredCount(){return allQuestions().filter(x=>app.exam.answers[x.q.uid]).length}
+function sectionQuestionCount(sec){return qCount(sec.groups)}
+function sectionAnsweredCount(sec){return sec.groups.flatMap(g=>g.questions).filter(q=>app.exam.answers[q.uid]).length}
+function startTimer(){stopTimer();app.timer=setInterval(renderTimer,1000);renderTimer()}
+function stopTimer(){if(app.timer)clearInterval(app.timer);app.timer=null}
+function renderTimer(){
+  if(!app.exam){$("timerText").textContent="00:00";return}
+  const s=elapsedSecondsForExam(app.exam);
+  $("timerText").textContent=formatSeconds(s);
+  if(!app.exam.paused)maybeMotivateByTime(s);
+}
+function pickMotivation(){return MOTIVATION_MESSAGES[Math.floor(Math.random()*MOTIVATION_MESSAGES.length)]}
+function maybeMotivateByAnswer(){
+  if(!app.exam||app.exam.submitted||app.exam.paused)return;
+  const ans=answeredCount(), total=allQuestions().length;
+  if(ans>0 && ans%10===0 && app.exam.motivation?.answerMilestone!==ans){
+    app.exam.motivation=app.exam.motivation||{};
+    app.exam.motivation.answerMilestone=ans;
+    toast(`${pickMotivation()}（已完成 ${ans}/${total} 題）`,"ok");
+  }
+}
+function maybeMotivateByTime(elapsedSeconds){
+  if(!app.exam||app.exam.submitted||app.exam.paused)return;
+  const milestone=Math.floor(elapsedSeconds/300);
+  if(milestone>0 && app.exam.motivation?.timeMilestone!==milestone){
+    app.exam.motivation=app.exam.motivation||{};
+    app.exam.motivation.timeMilestone=milestone;
+    toast(`${pickMotivation()}（已專注 ${milestone*5} 分鐘）`,"ok");
+  }
+}
+
+function renderExam(){
+  renderCounts(); renderTabs(); renderMeter(); renderSection(); renderResult(); renderWrongExports(); renderProgressStatus();
+}
+function renderCounts(){
+  for(const p of UPLOAD_PART_KEYS){
+    if(!$(p+"Files"))continue;
+    $(p+"Files").textContent=(app.libraries[p]||[]).length;
+    $(p+"Questions").textContent=(app.libraries[p]||[]).reduce((s,d)=>s+d.questionCount,0);
+  }
+}
+function renderLoadedList(){
+  const all=UPLOAD_PART_KEYS.flatMap(p=>(app.libraries[p]||[]).map(d=>({p,...d})));
+  $("loadedList").innerHTML=all.length?all.map(d=>`<div class="loaded-file"><div><strong>${esc(d.fileName)}</strong><br><span>${esc(partLabel(d.p))}｜${esc(d.generator_part)}｜${d.groups.length} 題組｜${d.questionCount} 題</span></div><span class="tag">${esc(d.difficulty||"unknown")}</span></div>`).join(""):`<div class="loaded-file"><div><strong>尚未載入題庫</strong><br><span>上傳 JSON 或讀取已存題庫後，這裡會顯示題庫列表。</span></div><span class="tag">ready</span></div>`;
+}
+function renderTabs(){
+  if(!app.exam){$("partTabs").innerHTML="";return}
+  $("partTabs").innerHTML=app.exam.sections.map((sec,i)=>{
+    const total=sectionQuestionCount(sec), ans=sectionAnsweredCount(sec);
+    const cls=["tab"]; if(i===app.currentPart)cls.push("active"); else if(total&&ans===total)cls.push("done");
+    return `<button class="${cls.join(" ")}" data-parttab="${i}">${sec.key} ${ans}/${total}</button>`;
+  }).join("");
+  document.querySelectorAll("[data-parttab]").forEach(b=>b.onclick=()=>{app.currentPart=Number(b.dataset.parttab);renderExam();window.scrollTo({top:$("examTop").offsetTop,behavior:"smooth"})});
+}
+function renderMeter(){
+  if(!app.exam)return;
+  const total=allQuestions().length, ans=answeredCount();
+  $("meterText").textContent=`${ans} / ${total} 已作答`;
+  $("meterFill").style.width=total?`${Math.round(ans/total*100)}%`:"0%";
+}
+function renderSection(){
+  if(!app.exam)return;
+  const sec=app.exam.sections[app.currentPart], meta=PARTS.find(p=>p.key===sec.key);
+  $("sectionTitle").textContent=meta.title;
+  $("sectionDirections").textContent=meta.directions;
+  $("prevPartBtn").disabled=app.currentPart===0||app.exam.paused;
+  $("nextPartBtn").disabled=!!app.exam.paused;
+  $("nextPartBtn").textContent=app.currentPart===2?"交卷並看成績":"下一部分";
+  $("submitExamTopBtn").disabled=app.exam.submitted||app.exam.paused;
+  if($("pauseExamTopBtn"))$("pauseExamTopBtn").disabled=app.exam.submitted;
+  let baseNo=1;
+  for(let i=0;i<app.currentPart;i++)baseNo+=qCount(app.exam.sections[i].groups);
+  if(sec.key==="P5")$("sectionBody").innerHTML=renderP5(sec,baseNo);
+  if(sec.key==="P6")$("sectionBody").innerHTML=renderSets(sec,baseNo);
+  if(sec.key==="P7")$("sectionBody").innerHTML=renderSets(sec,baseNo);
+  document.querySelectorAll("input[data-qid]").forEach(inp=>inp.onchange=e=>{if(app.exam.submitted||app.exam.paused)return;app.exam.answers[e.target.dataset.qid]=e.target.value;saveProgressToStorage(false);renderMeter();renderTabs();markSelected(e.target.dataset.qid);maybeMotivateByAnswer()});
+}
+function markSelected(qid){
+  document.querySelectorAll(`input[data-qid="${CSS.escape(qid)}"]`).forEach(inp=>{
+    const label=inp.closest(".option"); if(!label)return;
+    label.parentElement.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));
+    if(inp.checked)label.classList.add("selected");
+  });
+}
+function renderP5(sec,baseNo){
+  if(!sec.groups.length)return `<p class="directions">此 Part 尚未載入題目。</p>`;
+  let n=baseNo;
+  return `<div class="part5-list">${sec.groups.map(g=>renderQuestion(g,g.questions[0],n++)).join("")}</div>`;
+}
+function renderSets(sec,baseNo){
+  if(!sec.groups.length)return `<p class="directions">此 Part 尚未載入題組。</p>`;
+  let n=baseNo;
+  return sec.groups.map((g,idx)=>{
+    const docs=g.kind==="text"?`<div class="passage">${fmt(g.text)}</div>`:g.documents.map(d=>`<div class="doc"><h4>${esc(d.doc_id)}｜${esc(d.title)} <span class="tag">${esc(d.document_type)}</span></h4>${fmt(d.text)}</div>`).join("");
+    const qs=g.questions.map(q=>renderQuestion(g,q,n++)).join("");
+    return `<section class="set-block"><div class="set-title"><h3>${esc(g.title||g.id)}</h3><div><span class="tag blue">${esc(g.generator_part)}</span> <span class="tag green">${esc(g.domain||"")}</span></div></div>${docs}<div class="set-questions">${qs}</div></section>`;
+  }).join("");
+}
+function renderQuestion(g,q,no){
+  const ua=app.exam.answers[q.uid]||"", submitted=app.exam.submitted, locked=submitted||app.exam.paused;
+  const status=submitted?(ua===q.answer?`<span class="status ok">✓ 正確</span>`:`<span class="status bad">✕ 錯誤｜你的答案：${esc(ua||"未作答")}｜正解：${esc(q.answer)}</span>`):"";
+  const opts=["A","B","C","D"].map(k=>{
+    const cls=["option"]; if(ua===k)cls.push("selected"); if(submitted&&q.answer===k)cls.push("correct"); if(submitted&&ua===k&&ua!==q.answer)cls.push("wrong");
+    return `<label class="${cls.join(" ")}"><input type="radio" data-qid="${q.uid}" name="${q.uid}" value="${k}" ${ua===k?"checked":""} ${locked?"disabled":""}><span><strong>${k}.</strong> ${esc(q.options[k])}</span></label>`;
+  }).join("");
+  return `<article class="qcard" data-question-card="${q.uid}"><div class="qhead"><p class="qtitle"><span class="qno">${no}</span><span>${esc(q.question)}</span></p><div class="skill">${q.blank?`<span class="tag">${esc(q.blank)}</span>`:""}${q.skill?`<span class="tag">${esc(q.skill)}</span>`:""}${q.tags?.slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join("")||""}</div></div><div class="options">${opts}</div><div class="analysis">${status}${analysisHtml(q)}</div></article>`;
+}
+function analysisHtml(q){
+  const evidence=(q.evidence||[]).length?`<div class="abox"><strong>答案依據</strong>${q.evidence.map(e=>`${esc(e.doc_id||"")}${e.doc_id?"：":""}${esc(e.text||"")}`).join("<br>")}</div>`:"";
+  const notes=q.distractor_notes&&Object.keys(q.distractor_notes).length?Object.entries(q.distractor_notes).map(([k,v])=>`${esc(k)}：${esc(v)}`).join("<br>"):"無錯誤選項分析。";
+  return `<div class="abox"><strong>解析</strong>${esc(q.explanation_zh||"無解析。")}</div>${evidence}<div class="abox"><strong>錯誤選項分析</strong>${notes}</div>`;
+}
+function nextPart(){
+  if(!app.exam||app.exam.paused)return;
+  if(app.currentPart<2){
+    revealLuckyForCurrentPart(()=>{app.currentPart++;saveProgressToStorage(false);renderExam();goExamTop()});
+  } else submitExam();
+}
+function prevPart(){if(app.exam&&!app.exam.paused&&app.currentPart>0){app.currentPart--;saveProgressToStorage(false);renderExam();goExamTop()}}
+function jumpUnanswered(){
+  if(!app.exam||app.exam.paused)return;
+  const sec=app.exam.sections[app.currentPart];
+  const q=sec.groups.flatMap(g=>g.questions).find(q=>!app.exam.answers[q.uid]);
+  if(!q){toast("本部分沒有未作答題目。","ok");return}
+  const el=document.querySelector(`[data-question-card="${q.uid}"]`);
+  if(el)el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function submitExam(){
+  if(!app.exam||app.exam.submitted||app.exam.paused)return;
+  revealLuckyForCurrentPart(submitExamCore);
+}
+function submitExamCore(){
+  if(!app.exam||app.exam.submitted)return;
+  app.exam.submitted=true; app.exam.paused=false; app.exam.pausedAt=null; stopTimer(); document.body.classList.add("review-mode"); document.body.classList.remove("show-pause"); clearProgressStorage(false);
+  const wrongs=[];
+  for(const {sec,g,q} of allQuestions()){
+    const ua=app.exam.answers[q.uid]||"";
+    if(ua!==q.answer)wrongs.push(makeWrong(sec,g,q,ua));
+  }
+  if(!app.exam.logged){app.wrongHistory.push(...wrongs);app.exam.logged=true;saveWrongHistory()}
+  renderExam();
+  $("resultPage").scrollIntoView({behavior:"smooth",block:"start"});
+  toast(`已交卷：錯題 ${wrongs.length} 題，解析已開啟。`,"ok");
+}
+function makeWrong(sec,g,q,ua){
+  return {timestamp:new Date().toISOString(),exam_id:app.exam.id,source_file:g.sourceFile,part:g.part,generator_part:g.generator_part,difficulty:g.difficulty,domain:g.domain,group_id:g.id,group_title:g.title,question_id:q.id,skill:q.skill,tags:q.tags||[],user_answer:ua||"未作答",correct_answer:q.answer,question:q.question,options:q.options,explanation_zh:q.explanation_zh,distractor_notes:q.distractor_notes,evidence:q.evidence||[],context:g.kind==="text"?{type:"part6_text",title:g.title,text:g.text}:g.kind==="reading"?{type:"part7_documents",documents:g.documents}:{type:"part5_sentence"}};
+}
+function renderResult(){
+  if(!app.exam||!app.exam.submitted){$("scoreGrid").innerHTML="";return}
+  const cards=app.exam.sections.map(sec=>{
+    const total=sectionQuestionCount(sec);
+    const correct=sec.groups.flatMap(g=>g.questions).filter(q=>app.exam.answers[q.uid]===q.answer).length;
+    return `<div class="score"><strong>${correct}/${total}</strong><span>${sec.key} 正確率 ${total?Math.round(correct/total*100):0}%</span></div>`;
+  }).join("");
+  const total=allQuestions().length, correct=allQuestions().filter(x=>app.exam.answers[x.q.uid]===x.q.answer).length;
+  $("scoreGrid").innerHTML=`<div class="score"><strong>${correct}/${total}</strong><span>總分｜正確率 ${total?Math.round(correct/total*100):0}%</span></div>${cards}`;
+}
+function wrongText(){
+  if(!app.wrongHistory.length)return "目前沒有歷史錯題紀錄。";
+  const lines=["TOEIC Reading 歷史錯題紀錄","用途：提供給 AI 分析弱點、重編題庫或生成補救練習。",`總錯題筆數：${app.wrongHistory.length}`,""];
+  app.wrongHistory.forEach((e,i)=>{
+    lines.push("=".repeat(72),`錯題 ${i+1}`,`時間：${e.timestamp}`,`來源檔案：${e.source_file||""}`,`Part：${e.part||""}`,`Generator Part：${e.generator_part||""}`,`Difficulty：${e.difficulty||""}`,`Domain：${e.domain||""}`,`Group ID：${e.group_id||""}`,`Question ID：${e.question_id||""}`);
+    if(e.skill)lines.push(`Skill：${e.skill}`); if(e.tags?.length)lines.push(`Tags：${e.tags.join(", ")}`); lines.push("");
+    if(e.context?.type==="part6_text"){lines.push("[Context / Part 6 Text]",e.context.title||"",e.context.text||"","")}
+    if(e.context?.type==="part7_documents"){lines.push("[Context / Part 7 Documents]");(e.context.documents||[]).forEach(d=>{lines.push(`--- Document ${d.doc_id||""}: ${d.title||""} (${d.document_type||""}) ---`,d.text||"","")})}
+    lines.push("[Question]",e.question||"","","[Options]",`A. ${e.options?.A||""}`,`B. ${e.options?.B||""}`,`C. ${e.options?.C||""}`,`D. ${e.options?.D||""}`,"",`User Answer：${e.user_answer}`,`Correct Answer：${e.correct_answer}`,"","[Explanation ZH]",e.explanation_zh||"","");
+    if(e.evidence?.length){lines.push("[Evidence]");e.evidence.forEach(ev=>lines.push(`${ev.doc_id||""}${ev.doc_id?"：":""}${ev.text||""}`));lines.push("")}
+    if(e.distractor_notes&&Object.keys(e.distractor_notes).length){lines.push("[Distractor Notes]");Object.entries(e.distractor_notes).forEach(([k,v])=>lines.push(`${k}：${v}`));lines.push("")}
+  });
+  return lines.join("\n");
+}
+function renderWrongExports(){const t=wrongText();$("wrongExport").value=t;$("wrongExportDrawer").value=t}
+async function copyWrong(){try{await navigator.clipboard.writeText(wrongText());toast("已複製錯題文字。","ok")}catch{$("wrongExport").select();document.execCommand("copy");toast("已複製錯題文字。","ok")}}
+function downloadWrong(){const blob=new Blob([wrongText()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`toeic_wrong_history_${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.txt`;a.click();URL.revokeObjectURL(url)}
+function clearWrong(){if(confirm("確定清除所有歷史錯題？")){app.wrongHistory=[];saveWrongHistory();toast("已清除歷史錯題。","ok")}}
+
+function setup(){
+  UPLOAD_PART_KEYS.forEach(p=>$(p+"Input").addEventListener("change",e=>handleFiles(p,e.target.files)));
+  document.querySelectorAll(".upload-card").forEach(card=>{
+    const p=card.dataset.part;
+    card.addEventListener("dragover",e=>{e.preventDefault();card.classList.add("drag")});
+    card.addEventListener("dragleave",()=>card.classList.remove("drag"));
+    card.addEventListener("drop",e=>{e.preventDefault();card.classList.remove("drag");handleFiles(p,e.dataTransfer.files)});
+  });
+  $("startExamBtn").onclick=startExam; $("clearExamBtn").onclick=clearExam; $("rerollExamBtn").onclick=rerollExam; $("defaultLimitsBtn").onclick=applyDefaultLimits;
+  $("saveBanksBtn").onclick=()=>saveQuestionBanks(true); $("loadBanksBtn").onclick=()=>loadQuestionBanksFromStorage(true); $("clearSavedBanksBtn").onclick=clearSavedQuestionBanks;
+  $("continueSavedProgressBtn").onclick=continueSavedProgress; $("downloadProgressSetupBtn").onclick=downloadProgress; $("loadProgressBtn").onclick=triggerProgressInput; $("clearSavedProgressBtn").onclick=clearSavedProgress;
+  $("progressInput").addEventListener("change",e=>handleProgressFile(e.target.files));
+  $("pauseExamTopBtn").onclick=pauseExam; $("resumeExamBtn").onclick=resumeExam; $("saveProgressBtn").onclick=()=>saveProgressToStorage(true); $("downloadProgressBtn").onclick=downloadProgress; $("loadProgressBtn2").onclick=triggerProgressInput;
+  $("toggleSetupBtn").onclick=() => document.body.classList.toggle("show-setup");
+  $("setupDuringExamBtn").onclick=() => document.body.classList.toggle("show-setup");
+  $("toggleExportBtn").onclick=()=>{document.body.classList.toggle("show-setup");$("exportDrawer").classList.toggle("drawer");renderWrongExports()};
+  $("prevPartBtn").onclick=prevPart; $("nextPartBtn").onclick=nextPart; $("submitExamTopBtn").onclick=submitExam; $("jumpUnansweredBtn").onclick=jumpUnanswered;
+  $("copyWrongBtn").onclick=copyWrong; $("copyWrongBtn2").onclick=copyWrong;
+  $("downloadWrongBtn").onclick=downloadWrong; $("downloadWrongBtn2").onclick=downloadWrong;
+  $("refreshWrongBtn").onclick=renderWrongExports; $("clearWrongBtn").onclick=clearWrong;
+  $("luckyCloseBtn").onclick=closeLuckyCharm;
+  $("luckyModal").addEventListener("click",e=>{if(e.target.id==="luckyModal")closeLuckyCharm()});
+  window.addEventListener("beforeunload",handleBeforeUnload);
+  renderCounts();renderLoadedList();renderWrongExports();renderProgressStatus();
+}
+setup();
+</script>
+</body>
+</html>
